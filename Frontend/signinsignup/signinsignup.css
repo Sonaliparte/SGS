@@ -1,0 +1,79 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #777;
+  }
+  
+  .form {
+    background-color:#bfb8b8;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .heading {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .label {
+    font-weight: bold;
+    margin-top: 10px;
+    display: block;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .button {
+    background-color: #5a4df5;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .toggleText {
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .link {
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .separator {
+    text-align: center;
+    margin: 20px 0;
+    color: #aaa;
+  }
+  
+  .googleButton {
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
