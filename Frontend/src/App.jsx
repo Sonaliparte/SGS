@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import Payment from "./payment/Payment";
 import Footer from './components/Footer';
 import AuthForm from '../signinsignup/signinsignup';
+//import UserMenu from '../signinsignup/UserMenu';
 
 function App() {
   return (

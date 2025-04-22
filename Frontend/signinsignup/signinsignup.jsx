@@ -1,4 +1,3 @@
-// AuthForm.jsx
 import React, { useState } from 'react';
 import './signinsignup.css';
 
@@ -9,6 +8,9 @@ const AuthForm = () => {
     <div className="container">
       <form className="form">
         <h2 className="heading">{isSignUp ? 'Create a New Account' : 'Welcome Back'}</h2>
+
+        <label className="label">User Name </label>
+        <input className="input" type="email" />
 
         <label className="label">Email</label>
         <input className="input" type="email" />
@@ -31,6 +33,7 @@ const AuthForm = () => {
             {isSignUp ? "Continue" : "Sign up"}
           </span>
         </div>
+      
 
         <div className="separator">OR</div>
 
@@ -38,7 +41,7 @@ const AuthForm = () => {
           <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google" style={{ marginRight: '8px' }} />
           Continue with Google
         </button>
-      </form>
+        </form>
     </div>
   );
 };
