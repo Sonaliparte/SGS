@@ -27,7 +27,7 @@ const Home = () => {
           <Box component="img"
             src={webimg}
             alt="invoice"
-            sx={{ width: '400%', maxWidth: 500 }}
+            sx={{ width: '100%', height: 'auto',  maxWidth: '500px',}}
           />
         </Grid>
       </Grid>
