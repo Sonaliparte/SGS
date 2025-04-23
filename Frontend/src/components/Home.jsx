@@ -1,10 +1,11 @@
 import React from 'react';
 import { Box, Typography, Grid } from '@mui/material';
+import webimg from './assets/webimg.webp';
 
 const Home = () => {
   return (
     <Box sx={{ backgroundColor: "#777", minHeight: "100vh", p: 4, color: "#fff" }}>
-      
+  
       {/* Animated Heading */}
       <div className="home-container">
       <h1 className="animated-heading">
@@ -24,7 +25,7 @@ const Home = () => {
 
         <Grid item xs={12} md={5}>
           <Box component="img"
-            src={"./public/webimg.webp"}
+            src={webimg}
             alt="invoice"
             sx={{ width: '400%', maxWidth: 500 }}
           />
