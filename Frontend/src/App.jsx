@@ -6,7 +6,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Payment from "./payment/Payment";
 import Footer from './components/Footer';
-import AuthForm from '../signinsignup/signinsignup';
+import AuthForm from './auth/signinsignup';
 
 function App() {
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   AppBar,
   Toolbar,
@@ -17,6 +17,9 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import { useTheme } from '@mui/material/styles';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { AuthProvider, useAuth } from '../auth/Authcontext';
+import { auth } from '../auth/firebase';
+import { signOut } from 'firebase/auth';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -25,6 +28,32 @@ const Header = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        // User is signed in.
+        setUser(authUser);
+      } else {
+        // User is signed out.
+        setUser(null);
+      }
+    });
+
+    // Clean up the subscription when the component unmounts
+    return () => unsubscribe();
+  }, []);
+
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      navigate('/auth'); // Redirect to the sign-in page after signing out
+    } catch (error) {
+      console.error('Error signing out:', error);
+      // Handle sign-out error (e.g., display an error message)
+    }
+  };
 
   const scrollTo = (id) => {
     if (location.pathname !== "/") {
@@ -59,9 +88,15 @@ const Header = () => {
           <ListItemText primary="Payment" />
         </ListItem>
         <Divider />
-        <ListItem button component={Link} to="/auth">
-          <ListItemText primary="Sign In" />
-        </ListItem>
+        {user ? (
+          <ListItem button onClick={handleSignOut}>
+            <ListItemText primary="Sign Out" />
+          </ListItem>
+        ) : (
+          <ListItem button component={Link} to="/auth">
+            <ListItemText primary="Sign In" />
+          </ListItem>
+        )}
       </List>
     </Box>
   );
@@ -82,6 +117,11 @@ const Header = () => {
 
           {isMobile ? (
             <>
+              {user && (
+                <IconButton color="inherit" sx={{ mr: 2 }}>
+                  <Avatar src={user.photoURL} alt={user.displayName} />
+                </IconButton>
+              )}
               <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>
                 <MenuIcon sx={{ color: '#000' }} />
               </IconButton>
@@ -90,7 +130,12 @@ const Header = () => {
               </Drawer>
             </>
           ) : (
-            <Box display="flex" alignItems="center" gap={4}>
+            <Box display="flex" alignItems="center" gap={2}>
+              {user && (
+                <IconButton color="inherit" sx={{ mr: 2 }}>
+                  <Avatar src={user.photoURL} alt={user.displayName} />
+                </IconButton>
+              )}
               <Button onClick={() => scrollTo('home')} sx={{ color: '#000', fontWeight: 'bold', fontSize: "15px" }}>
                 Home
               </Button>
@@ -104,22 +149,40 @@ const Header = () => {
                 Contact Us
               </Button>
 
-              <Link to="/auth">
+              {user ? (
                 <Button
                   variant="contained"
+                  onClick={handleSignOut}
                   sx={{
-                    backgroundColor: '#000',
+                    backgroundColor: '#222', 
                     borderRadius: 2,
                     textTransform: 'none',
                     px: 3,
                     '&:hover': {
-                      backgroundColor: '#222',
+                      backgroundColor: '#c82333',
                     },
                   }}
                 >
-                  Sign In
+                  Sign Out
                 </Button>
-              </Link>
+              ) : (
+                <Link to="/auth">
+                  <Button
+                    variant="contained"
+                    sx={{
+                      backgroundColor: '#222',
+                      borderRadius: 2,
+                      textTransform: 'none',
+                      px: 3,
+                      '&:hover': {
+                        backgroundColor: '#222',
+                      },
+                    }}
+                  >
+                    Sign In
+                  </Button>
+                </Link>
+              )}
             </Box>
           )}
         </Toolbar>
