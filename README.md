@@ -28,13 +28,13 @@ work.
 # Architecture 
 
 # What I Learned
-Creating full-stack web apps using React, Postgres, and Firebase
-Deploying on Google Kubernetes Engine with managed Cloud SQL
-Dockerizing the frontend and backend for consistent deployments
-Managing real-world data models for housing society needs
+- Creating full-stack web apps using React, Postgres, and Firebase
+- Deploying on Google Kubernetes Engine with managed Cloud SQL
+- Dockerizing the frontend and backend for consistent deployments
+- Managing real-world data models for housing society needs
 
 # Ideal For
-Personal/community software projects with real-world impact
-Resume/portfolio demonstrations of full-stack development + cloud deployment
-Projects involving Kubernetes, Firebase Auth, Docker, and SQL
+- Personal/community software projects with real-world impact
+- Resume/portfolio demonstrations of full-stack development + cloud deployment
+- Projects involving Kubernetes, Firebase Auth, Docker, and SQL
 
