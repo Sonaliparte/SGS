@@ -26,6 +26,7 @@ work.
 - *Email Notifications* – Automated reminders for due payments
 
 # Architecture 
+![image](https://github.com/user-attachments/assets/b789b919-1df8-4f07-a145-5339e4ba1100)
 
 # What I Learned
 - Creating full-stack web apps using React, Postgres, and Firebase
